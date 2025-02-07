@@ -73,6 +73,19 @@
     <script>
 
         const API_URL = "https://himatikom-api-production.up.railway.app";
+
+        async function checkLogin() {
+            const response = await fetch(`${API_URL}/check-auth`, {
+                method: "GET",
+                credentials: "include"
+            });
+
+            if (!response.ok) {
+                window.location.href = "login.html";
+            }
+        }
+        checkLogin();
+
         document.getElementById('blogForm').addEventListener('submit', async (e) => {
             e.preventDefault();
 
@@ -94,6 +107,7 @@
                 window.location.href = 'blog.html';
             } else {
                 alert('Gagal menambah blog. Pastikan sudah login.');
+                window.location.href = 'login.html';
             }
         });
 
@@ -128,7 +142,7 @@
                 alert("Blog berhasil dihapus");
                 loadBlogs();
             } else {
-                alert("Gagal menghapus blog");
+                alert("Gagal menghapus blog. Pastikan anda sudah login.");
             }
         }
 
