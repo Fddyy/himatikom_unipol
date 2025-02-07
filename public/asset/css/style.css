@@ -5,6 +5,10 @@ body {
   grid-template-rows: auto 1fr auto;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .hero-section {
   position: relative;
   color: white;
