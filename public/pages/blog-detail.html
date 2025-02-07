@@ -64,7 +64,7 @@
                 document.getElementById('title').innerText = blog.title;
                 document.getElementById('author').innerText = blog.author;
                 document.getElementById('date').innerText = new Date(blog.created_at).toLocaleDateString();
-                document.getElementById('image').src = `https://himatikom-api-production.up.railway.app/${blog.image_url}`;
+                document.getElementById('image').src = `${blog.image_url}`;
                 document.getElementById('content').innerText = blog.content;
             }
 
