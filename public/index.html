@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HIMATIKOM UNIPOL</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link href="asset/css/style.css" rel="stylesheet">
 </head>
 
@@ -42,7 +43,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-section text-center py-5">
+    <section class="hero-section text-center py-3">
         <div class="container position-relative" style="z-index: 10;">
             <h1 class="display-4 text-success">Selamat datang di Website HMJ Teknik Informatika UNIPOL</h1>
         </div>
@@ -81,11 +82,12 @@
 
     <!-- Blog Post Section -->
     <section class="container my-5">
-        <h2 class="text-success mb-4">Berita Terbaru Jurusan Teknik Informatika Unipol</h2>
-        <div class="row" id="blogList">
-
-        </div>
+        <h2 class="text-success mb-4">
+            <i class="bi bi-newspaper"></i> Berita Terbaru Jurusan Teknik Informatika Unipol
+        </h2>
+        <div class="row" id="blogList"></div>
     </section>
+
 
     <!-- Footer -->
     <footer class="bg-success text-white text-center py-3">
@@ -96,7 +98,7 @@
 
     <script>
         async function fetchBlogs() {
-            const response = await fetch('https://himatikom-api-production.up.railway.app/blogs');
+            const response = await fetch('https://himatikom-api-production.up.railway.app/home/blogs');
             const blogs = await response.json();
 
             let blogListHTML = '';

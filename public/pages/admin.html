@@ -67,7 +67,14 @@
         </form>
     </div>
 
+    <div class="container mt-5">
+        <h2>Daftar Blog</h2>
+        <ul id="blogList" class="list-group"></ul>
+    </div>
+
     <script>
+
+        const API_URL = "https://himatikom-api-production.up.railway.app";
         document.getElementById('blogForm').addEventListener('submit', async (e) => {
             e.preventDefault();
 
@@ -91,6 +98,43 @@
                 alert('Gagal menambah blog. Pastikan sudah login.');
             }
         });
+
+        async function loadBlogs() {
+            const response = await fetch(`${API_URL}/blogs`);
+            const blogs = await response.json();
+            const blogList = document.getElementById('blogList');
+
+            blogList.innerHTML = "";
+
+            blogs.forEach(blog => {
+                const li = document.createElement("li");
+                li.className = "list-group-item d-flex justify-content-between align-items-center";
+                li.innerHTML = `
+                    ${blog.title}
+                    <button class="btn btn-danger btn-sm" onclick="deleteBlog(${blog.id})">Hapus</button>
+                `;
+                blogList.appendChild(li);
+            });
+        }
+
+        // Hapus Blog
+        async function deleteBlog(id) {
+            if (!confirm("Yakin ingin menghapus blog ini?")) return;
+
+            const response = await fetch(`${API_URL}/blog/${id}`, {
+                method: 'DELETE',
+                credentials: "include"
+            });
+
+            if (response.ok) {
+                alert("Blog berhasil dihapus");
+                loadBlogs();
+            } else {
+                alert("Gagal menghapus blog");
+            }
+        }
+
+        loadBlogs();
     </script>
 </body>
 
