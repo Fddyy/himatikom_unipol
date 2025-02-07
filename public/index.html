@@ -106,7 +106,7 @@
                 blogListHTML += `
                     <div class="col-md-4 mb-4">
                         <div class="card">
-                            <img src="https://himatikom-api-production.up.railway.app/${blog.image_url}" class="card-img-top" alt="Gambar Blog">
+                            <img src="${blog.image_url}" class="card-img-top" alt="Gambar Blog">
                             <div class="card-body">
                                 <h5 class="card-title">${blog.title}</h5>
                                 <p class="card-text">By ${blog.author} | ${new Date(blog.created_at).toLocaleDateString()}</p>
