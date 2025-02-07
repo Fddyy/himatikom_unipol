@@ -14,7 +14,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-success">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <img src="../asset/logo/himatikom.png" alt="Logo" width="30" height="30"
+                <img src="asset/logo/himatikom.png" alt="Logo" width="30" height="30"
                     class="d-inline-block align-text-top">
                 HIMATIKOM UNIPOL
             </a>
@@ -25,19 +25,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="../index.html">Beranda</a>
+                        <a class="nav-link active" href="index.html">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="blog.html">Berita</a>
+                        <a class="nav-link" href="pages/blog.html">Berita</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">Tentang</a>
+                        <a class="nav-link" href="pages/about.html">Tentang</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="admin.html">Admin</a>
+                        <a class="nav-link" href="pages/contact.html">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -74,7 +71,7 @@
 
     <script>
 
-        const API_URL = "https://himatikom-api-production.up.railway.app";
+        const API_URL = "https://himatikom-api-production-9934.up.railway.app";
         document.getElementById('blogForm').addEventListener('submit', async (e) => {
             e.preventDefault();
 
@@ -85,7 +82,7 @@
             formData.append('image', document.getElementById('image').files[0]);
 
 
-            const response = await fetch('https://himatikom-api-production.up.railway.app/add/blog', {
+            const response = await fetch(`${API_URL}/add/blog`, {
                 method: 'POST',
                 credentials: "include",
                 body: formData
