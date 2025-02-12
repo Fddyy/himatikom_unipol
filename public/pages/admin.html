@@ -95,24 +95,19 @@
             formData.append('content', document.getElementById('content').value);
             formData.append('image', document.getElementById('image').files[0]);
 
-            try {
-                const response = await fetch(`${API_URL}/add/blog`, {
-                    method: 'POST',
-                    credentials: "include",
-                    body: formData
-                });
+            const response = await fetch(`${API_URL}/add/blog`, {
+                method: 'POST',
+                credentials: "include",
+                body: formData
+            });
 
-                const data = await response.json();
+            const data = await response.json();
 
-                if (response.ok) {
-                    alert('Blog berhasil ditambahkan!');
-                    window.location.href = 'blog.html';
-                } else {
-                    alert(`Gagal menambah blog: ${data.error || 'Kesalahan tidak diketahui'}`);
-                }
-            } catch (err) {
-                console.error("Error:", err);
-                alert('Terjadi kesalahan saat menambah blog.');
+            if (response.ok) {
+                alert('Blog berhasil ditambahkan!');
+                window.location.href = 'blog.html';
+            } else {
+                alert(`Gagal menambah blog: ${data.error || 'Kesalahan tidak diketahui'}`);
             }
         });
 
