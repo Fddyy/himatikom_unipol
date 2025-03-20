@@ -173,13 +173,15 @@
             let blogListHTML = '';
             blogs.forEach(blog => {
 
+                let shortContent = blog.content.length > 100 ? blog.content.substring(0, 100) + '...' : blog.content;
+
                 blogListHTML += `
                     <div class="col-md-4 mb-4">
                         <div class="card">
                             <img src="${blog.image_url}" class="card-img-top" alt="Gambar Blog">
                             <div class="card-body">
                                 <h5 class="card-title">${blog.title}</h5>
-                                <p class="card-text">By ${blog.author} | ${new Date(blog.created_at).toLocaleDateString()}</p>
+                                <p class="card-text">By ${shortContent}</p>
                                 <a href="pages/blog-detail.html?slug=${blog.slug}" class="btn btn-success">Baca Selengkapnya</a>
                             </div>
                         </div>
