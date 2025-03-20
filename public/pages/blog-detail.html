@@ -57,9 +57,9 @@
         <script>
             async function fetchBlogDetail() {
                 const params = new URLSearchParams(window.location.search);
-                const blogId = params.get('id');
+                const blogSlug = params.get('slug');
 
-                const response = await fetch(`https://himatikom-api-production.up.railway.app/blog/${blogId}`);
+                const response = await fetch(`https://himatikom-api-production.up.railway.app/blog/${blogSlug}`);
                 const blog = await response.json();
 
                 document.getElementById('title').innerText = blog.title;
